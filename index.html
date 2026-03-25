@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AITRICS · PinkCare — 의료진 협력 제안서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy-900: #0a1628;
+  --navy-800: #0f2140;
+  --navy-700: #152d54;
+  --navy-600: #1b3a6b;
+  --blue-500: #234d8e;
+  --blue-400: #3b7dd8;
+  --blue-300: #5a9bef;
+  --blue-200: #8bbcf5;
+  --blue-100: #c4dcfa;
+  --blue-50: #edf3fb;
+  --gold: #b8a07a;
+  --gold-light: #d4c4a8;
+  --white: #ffffff;
+  --off-white: #f7f8fa;
+  --gray-100: #eef1f5;
+  --gray-200: #dde2ea;
+  --gray-300: #c5ccd6;
+  --gray-400: #9aa5b4;
+  --gray-500: #7a8599;
+  --gray-600: #5a6577;
+  --gray-700: #3d4756;
+  --gray-800: #2c3444;
+  --text: #1a2332;
+  --text-sub: #4a5568;
+  --text-muted: #7a8599;
+  --red-accent: #c44b3f;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.7;
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 52px;
+  background: rgba(10,22,40,0.94);
+  backdrop-filter: blur(10px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 56px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem; font-weight: 600; color: var(--white);
+  letter-spacing: 2.5px; text-transform: uppercase;
+}
+.nav-logo span { color: var(--gold); margin-left: 6px; font-weight: 400; }
+.nav-right { font-size: 0.65rem; color: var(--gray-400); letter-spacing: 1.5px; text-transform: uppercase; }
+
+/* ── HERO ── */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  background: linear-gradient(160deg, #080e1a 0%, var(--navy-800) 40%, var(--navy-600) 100%);
+  overflow: hidden;
+}
+.hero::after {
+  content: ''; position: absolute;
+  top: -15%; right: -8%; width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(59,125,216,0.08) 0%, transparent 65%);
+  border-radius: 50%;
+}
+.hero-inner {
+  position: relative; z-index: 2;
+  max-width: 960px; margin: 0 auto; padding: 140px 56px 110px;
+}
+.hero-label {
+  font-size: 0.62rem; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 52px; font-weight: 500;
+  display: flex; align-items: center; gap: 12px;
+  opacity: 0; animation: up .7s ease forwards .3s;
+}
+.hero-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+.hero h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(2rem, 4.2vw, 3.1rem); font-weight: 700;
+  color: var(--white); line-height: 1.5; margin-bottom: 32px;
+  opacity: 0; animation: up .7s ease forwards .5s;
+}
+.hero h1 em { font-style: normal; color: var(--blue-200); }
+.hero-desc {
+  font-size: 0.95rem; color: var(--gray-400); line-height: 1.85;
+  max-width: 540px; font-weight: 300;
+  opacity: 0; animation: up .7s ease forwards .7s;
+}
+.hero-tags {
+  display: flex; gap: 10px; margin-top: 44px; flex-wrap: wrap;
+  opacity: 0; animation: up .7s ease forwards .9s;
+}
+.hero-tag {
+  font-size: 0.7rem; color: var(--blue-200);
+  border: 1px solid rgba(90,155,239,0.2); padding: 5px 16px;
+  letter-spacing: 0.3px;
+}
+
+/* ── SECTION ── */
+.sec { padding: 110px 56px; }
+.sec-inner { max-width: 880px; margin: 0 auto; }
+.sec-label {
+  font-size: 0.6rem; letter-spacing: 3.5px; text-transform: uppercase;
+  color: var(--blue-400); font-weight: 600; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.sec-label::before { content: ''; width: 18px; height: 1px; background: var(--blue-400); }
+.sec-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(1.45rem, 2.6vw, 2rem); font-weight: 700;
+  color: var(--navy-800); line-height: 1.5; margin-bottom: 18px;
+}
+.sec-desc {
+  font-size: 0.9rem; color: var(--text-sub); line-height: 1.9;
+  max-width: 640px; margin-bottom: 52px;
+}
+
+.bg-gray { background: var(--off-white); border-top: 1px solid var(--gray-100); border-bottom: 1px solid var(--gray-100); }
+.bg-dark { background: var(--navy-900); }
+.bg-dark .sec-label { color: var(--gold); }
+.bg-dark .sec-label::before { background: var(--gold); }
+.bg-dark .sec-title { color: var(--white); }
+.bg-dark .sec-desc { color: var(--gray-400); }
+
+/* ── CALLOUT ── */
+.callout {
+  padding: 32px 36px; margin: 36px 0;
+  border-left: 3px solid var(--blue-400);
+  background: var(--blue-50);
+}
+.callout p {
+  font-size: 0.88rem; color: var(--text-sub); line-height: 1.9;
+}
+.callout strong { color: var(--navy-700); font-weight: 600; }
+
+/* ── STATS ── */
+.stats {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border: 1px solid var(--gray-200); margin: 44px 0;
+}
+.stat {
+  padding: 32px 24px; text-align: center;
+  border-right: 1px solid var(--gray-200);
+}
+.stat:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem; font-weight: 700; color: var(--navy-700); line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label { font-size: 0.72rem; color: var(--text-muted); }
+
+/* ── SERVICE CARDS ── */
+.svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.svc-card {
+  background: var(--white); border: 1px solid var(--gray-200);
+  padding: 44px 36px; transition: border-color .3s;
+}
+.svc-card:hover { border-color: var(--blue-400); }
+.svc-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem; font-weight: 600; color: var(--blue-100); line-height: 1;
+  margin-bottom: 16px;
+}
+.svc-card h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.05rem; font-weight: 600; color: var(--navy-800); margin-bottom: 14px;
+}
+.svc-card p { font-size: 0.84rem; color: var(--text-sub); line-height: 1.85; }
+.svc-tag {
+  display: inline-block; margin-top: 18px;
+  font-size: 0.65rem; letter-spacing: 0.8px; color: var(--blue-400);
+  border: 1px solid var(--blue-100); padding: 3px 12px;
+}
+
+/* ── COMPLIANCE ── */
+.compliance {
+  display: grid; grid-template-columns: repeat(7,1fr);
+  margin-top: 44px; border: 1px solid var(--gray-200);
+}
+.comp-item {
+  padding: 20px 12px; text-align: center;
+  font-size: 0.75rem; font-weight: 500;
+  border-right: 1px solid var(--gray-200);
+}
+.comp-item:last-child { border-right: none; }
+.comp-item.no { background: var(--off-white); color: var(--gray-600); }
+.comp-item.yes { background: var(--blue-50); color: var(--navy-700); }
+.comp-mark { display: block; font-size: 0.85rem; margin-bottom: 6px; font-weight: 400; color: var(--gray-400); }
+.comp-item.yes .comp-mark { color: var(--blue-400); }
+
+/* ── JOURNEY ── */
+.journey { position: relative; padding-left: 52px; }
+.journey::before {
+  content: ''; position: absolute;
+  left: 14px; top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom, var(--blue-400), var(--blue-100));
+}
+.j-phase {
+  position: relative; margin-bottom: 48px;
+  padding: 32px 36px;
+  background: var(--white); border: 1px solid var(--gray-200);
+  border-left: 3px solid var(--blue-400);
+  transition: box-shadow .3s;
+}
+.j-phase:hover { box-shadow: 0 4px 20px rgba(10,22,40,.05); }
+.j-phase::before {
+  content: ''; position: absolute;
+  left: -46px; top: 38px; width: 9px; height: 9px;
+  border-radius: 50%; background: var(--blue-400);
+  border: 2px solid var(--white); box-shadow: 0 0 0 2px var(--blue-400);
+}
+.j-label {
+  font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--blue-400); font-weight: 600; margin-bottom: 4px;
+}
+.j-phase h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.1rem; font-weight: 700; color: var(--navy-800); margin-bottom: 10px;
+}
+.j-phase > p {
+  font-size: 0.84rem; color: var(--text-sub); line-height: 1.85; margin-bottom: 14px;
+}
+.j-need {
+  font-size: 0.78rem; color: var(--navy-600);
+  background: var(--blue-50); padding: 10px 18px;
+  border-left: 2px solid var(--blue-300); font-weight: 500;
+}
+
+/* ── INSIGHT BOX ── */
+.insight {
+  background: linear-gradient(135deg, var(--navy-800), var(--navy-700));
+  padding: 44px 48px; margin-top: 48px; position: relative; overflow: hidden;
+}
+.insight::after {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle, rgba(184,160,122,.08) 0%, transparent 70%);
+}
+.insight p {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1rem; line-height: 1.95; color: var(--white);
+  position: relative; z-index: 1;
+}
+.insight em { font-style: normal; color: var(--gold-light); }
+
+/* ── VALUE SECTION (dark) ── */
+.val-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 48px; }
+.val-card {
+  padding: 44px 36px;
+  border: 1px solid rgba(255,255,255,.06);
+  transition: background .3s;
+}
+.val-card:hover { background: rgba(255,255,255,.03); }
+.val-label {
+  font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px; font-weight: 500;
+}
+.val-card h4 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 12px;
+}
+.val-card p { font-size: 0.82rem; color: var(--gray-400); line-height: 1.85; }
+
+/* ── FEATURE LIST ── */
+.feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 44px; }
+.feat-item {
+  padding: 32px 28px; background: var(--white);
+  border: 1px solid var(--gray-200); transition: border-color .3s;
+}
+.feat-item:hover { border-color: var(--blue-300); }
+.feat-item h4 {
+  font-size: 0.9rem; font-weight: 600; color: var(--navy-700); margin-bottom: 8px;
+}
+.feat-item p { font-size: 0.8rem; color: var(--text-sub); line-height: 1.85; }
+
+/* ── ROLE ── */
+.role-list { counter-reset: role; }
+.role-item {
+  display: grid; grid-template-columns: 48px 1fr; gap: 20px;
+  padding: 28px 0; border-bottom: 1px solid var(--gray-100); align-items: start;
+}
+.role-item:last-child { border-bottom: none; }
+.role-num {
+  counter-increment: role; font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; font-weight: 600; color: var(--blue-200); text-align: center; line-height: 1;
+}
+.role-num::before { content: counter(role); }
+.role-item h4 { font-size: 0.9rem; font-weight: 600; color: var(--navy-800); margin-bottom: 4px; }
+.role-item p { font-size: 0.82rem; color: var(--text-sub); line-height: 1.75; }
+.role-primary {
+  background: var(--blue-50); padding: 28px; border: 1px solid var(--blue-100);
+  margin-bottom: 8px;
+}
+.role-primary .role-num { color: var(--blue-400); }
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--navy-900); padding: 56px; text-align: center;
+}
+.footer-line { width: 36px; height: 1px; background: var(--gold); margin: 0 auto 24px; }
+.footer p { font-size: 0.75rem; color: var(--gray-400); line-height: 1.9; }
+.footer a { color: var(--blue-300); text-decoration: none; }
+
+/* ── ANIM ── */
+@keyframes up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .sec { padding: 80px 24px; }
+  .hero-inner { padding: 110px 24px 80px; }
+  .svc-grid, .val-grid, .feat-grid { grid-template-columns: 1fr; }
+  .compliance { grid-template-columns: repeat(4,1fr); }
+  .stats { grid-template-columns: 1fr; }
+  .stat { border-right: none; border-bottom: 1px solid var(--gray-200); }
+  .stat:last-child { border-bottom: none; }
+  .journey { padding-left: 36px; }
+  .j-phase::before { left: -30px; }
+  .nav { padding: 0 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-logo">AITRICS <span>PinkCare</span></div>
+  <div class="nav-right">Confidential 2026</div>
+</div>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">AITRICS · PinkCare Project</div>
+    <h1>교수님의 환우분들이<br>더 <em>안전한 곳</em>에서<br>정보를 찾을 수 있도록</h1>
+    <p class="hero-desc">유방암 환우 커뮤니티 + 검사결과지 무료 설명 서비스<br>— 환우 유입 협력 및 임상 자문 요청</p>
+    <div class="hero-tags">
+      <span class="hero-tag">의료법 준수</span>
+      <span class="hero-tag">진료 · 처방 · 개인 상담 없음</span>
+      <span class="hero-tag">무료 서비스 (PoC 단계)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BACKGROUND ─── -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-label">Background</div>
+    <h2 class="sec-title">환자들은 진료실 밖에서<br>혼자 불안을 견디고 있습니다</h2>
+    <p class="sec-desc">에이아이트릭스는 의료 AI로 병원과 의료진의 의사결정을 지원해온 기업입니다. 유방암 환우들이 ChatGPT·Gemini에 의존해 검사 결과를 해석하고, 치료 결정을 고민하는 현실을 목격한 뒤, 신뢰할 수 있는 정보 공간을 직접 만들기로 했습니다.</p>
+
+    <div class="callout">
+      <p><strong>핑크케어는 경제적 수익보다 환자에게 진심으로 기여하는 것을 목표로 합니다.</strong><br>의료 AI 기술을 보유한 저희가 환자에게 직접 기여할 수 있는 방법을 고민하며 시작한 프로젝트이며, 현재 서비스는 무료로 운영되고 있습니다.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-num">160</div><div class="stat-label">PoC 3주 유입 환우 수</div></div>
+      <div class="stat"><div class="stat-num">1,705</div><div class="stat-label">커뮤니티 총 메시지</div></div>
+      <div class="stat"><div class="stat-num">0원</div><div class="stat-label">마케팅 비용 (Paid CAC)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICE ─── -->
+<section class="sec bg-gray">
+  <div class="sec-inner">
+    <div class="sec-label">Service</div>
+    <h2 class="sec-title">두 가지 축으로 운영됩니다</h2>
+    <p class="sec-desc">검사결과지 설명과 환우 커뮤니티, 두 축이 서로를 보완하며 환우의 정보 공백을 채웁니다.</p>
+
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <h3>검사결과지 설명 서비스</h3>
+        <p>검사 결과지를 업로드하면 수치와 용어의 의미를 의학적으로 정확하게 풀어서 설명합니다. 병리 결과, 혈액 검사, 영상 판독문 등 다양한 검사 항목을 지원하며, AI 1차 해석 후 의료진 검증 및 코멘트로 신뢰도를 강화합니다. 진단·처방·개인 상담은 제공하지 않으며, 정보 안내 범위 내에서만 운영합니다.</p>
+        <span class="svc-tag">무료 제공 · PoC 단계</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <h3>유방암 환우 커뮤니티</h3>
+        <p>카카오 오픈채팅 기반으로 운영 중이며, 향후 게시판·피드형 커뮤니티로 확장 예정입니다. 치료 경험, 부작용 패턴, 항암 후 일상 회복 등 환우 간 실질적 정보가 공유됩니다. 의학적으로 부정확한 정보를 전문가가 부드럽게 바로잡을 수 있는 구조로, 심리적 지지와 정보 공유가 공존하는 안전한 온라인 공간입니다.</p>
+        <span class="svc-tag">심리적 지지 + 정보 공유</span>
+      </div>
+    </div>
+
+    <div class="compliance">
+      <div class="comp-item no"><span class="comp-mark">&times;</span>진료</div>
+      <div class="comp-item no"><span class="comp-mark">&times;</span>처방</div>
+      <div class="comp-item no"><span class="comp-mark">&times;</span>개인 의료 상담</div>
+      <div class="comp-item no"><span class="comp-mark">&times;</span>특정 치료 결정</div>
+      <div class="comp-item yes"><span class="comp-mark">&check;</span>정보 공유</div>
+      <div class="comp-item yes"><span class="comp-mark">&check;</span>심리적 지지</div>
+      <div class="comp-item yes"><span class="comp-mark">&check;</span>의료법 준수</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PATIENT JOURNEY ─── -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-label">Patient Journey</div>
+    <h2 class="sec-title">환자가 정보를 찾는 심리적 여정</h2>
+    <p class="sec-desc">환우가 커뮤니티를 찾는 행동은 단순한 정보 검색이 아닙니다. 진단부터 회복까지, 각 단계마다 다른 감정과 다른 필요가 존재합니다. 이 여정을 이해하지 않고 만든 커뮤니티는 사용자의 진짜 문제를 해결할 수 없습니다.</p>
+
+    <div class="journey">
+      <div class="j-phase">
+        <div class="j-label">Phase 01 · 진단 직후</div>
+        <h3>공포와 혼란</h3>
+        <p>갑작스러운 진단 앞에 환자는 극도의 공포를 경험합니다. 의사로부터 들은 의학 용어는 낯설고, 앞으로 무슨 일이 일어날지 전혀 예측할 수 없습니다. 이 순간 환자가 가장 먼저 하는 행동은 인터넷 검색입니다.</p>
+        <div class="j-need">필요한 것 — 두려움을 줄여줄 정확한 정보 + 같은 경험을 한 사람의 이야기</div>
+      </div>
+      <div class="j-phase">
+        <div class="j-label">Phase 02 · 치료 결정 과정</div>
+        <h3>선택의 불확실성</h3>
+        <p>치료 방법, 병원 선택, 부작용 관리 등 수많은 결정을 내려야 하는 시기입니다. 의사의 설명은 짧고, 인터넷 정보는 넘쳐나지만 무엇을 믿어야 할지 알 수 없습니다. 잘못된 결정이 생명에 영향을 줄 수 있다는 무게감이 존재합니다.</p>
+        <div class="j-need">필요한 것 — 신뢰할 수 있는 근거 기반 정보 + 전문가의 맥락 있는 설명</div>
+      </div>
+      <div class="j-phase">
+        <div class="j-label">Phase 03 · 치료 중</div>
+        <h3>끊임없는 정보 탐색</h3>
+        <p>치료가 진행되는 동안 예상치 못한 부작용, 증상의 변화, 식단과 생활 습관에 대한 질문이 끊임없이 생겨납니다. 다음 진료까지 기다릴 수 없는 질문들이 매일 발생하며, 비슷한 경험을 한 사람을 절실하게 찾게 됩니다.</p>
+        <div class="j-need">필요한 것 — 실시간 응답 + 유사 경험자와의 연결</div>
+      </div>
+      <div class="j-phase">
+        <div class="j-label">Phase 04 · 치료 중 · 후</div>
+        <h3>고립감과 정서적 소진</h3>
+        <p>질환은 신체적 고통만이 아닙니다. 주변에 자신의 상황을 완전히 이해해주는 사람이 없다는 고립감, 미래에 대한 불안, 일상의 상실감이 동반됩니다. 이 감정은 같은 경험을 가진 사람들과의 연결을 통해서만 진정으로 해소될 수 있습니다.</p>
+        <div class="j-need">필요한 것 — 공감과 정서적 지지 + 소속감을 주는 커뮤니티</div>
+      </div>
+      <div class="j-phase">
+        <div class="j-label">Phase 05 · 회복기</div>
+        <h3>일상 복귀와 재발 불안</h3>
+        <p>치료가 끝나도 불안은 계속됩니다. 재발 징후에 대한 예민함, 후유증 관리, 일상으로의 복귀에 대한 막막함. 이 시기의 환자는 의료 시스템의 관심에서 벗어났지만, 여전히 지속적인 정보와 지지가 필요한 상태입니다.</p>
+        <div class="j-need">필요한 것 — 지속적인 정보 업데이트 + 장기적 커뮤니티 소속</div>
+      </div>
+    </div>
+
+    <div class="insight">
+      <p>환자의 여정 전체에 걸쳐 커뮤니티에 대한 니즈가 존재합니다. 이는 단순한 정보 플랫폼이 아니라, 환자의 <em>심리적 안전망이자 지속적인 정보 인프라</em>로 커뮤니티를 설계해야 함을 의미합니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── USER VALUE ─── -->
+<section class="sec bg-dark">
+  <div class="sec-inner">
+    <div class="sec-label">onco.care · User Value</div>
+    <h2 class="sec-title">환우가 이 플랫폼에서 얻는 것</h2>
+    <p class="sec-desc">onco.care는 환자의 심리적 여정 전체를 아우르는 지능형 의료 커뮤니티입니다. 진단 직후의 공포부터 회복기의 불안까지, 각 단계에서 환우에게 실질적인 가치를 제공합니다.</p>
+
+    <div class="val-grid">
+      <div class="val-card">
+        <div class="val-label">Value 01</div>
+        <h4>검사결과지를 이해할 수 있게 됩니다</h4>
+        <p>검사 결과를 사진으로 찍어 올리면 AI가 수치와 용어를 쉬운 말로 풀어 설명합니다. ER/PR 양성이 무엇을 의미하는지, Ki-67 수치가 왜 중요한지, HER2 상태가 치료 방향에 어떤 영향을 주는지를 환자가 이해할 수 있는 언어로 전달합니다. AI 해석 후 의료진이 검토하여 신뢰도를 확보하며, 원본 이미지는 30일 후 파기됩니다.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-label">Value 02</div>
+        <h4>같은 처지의 사람과 연결됩니다</h4>
+        <p>같은 암종, 같은 병기, 같은 치료 단계의 환우가 자동으로 매칭됩니다. "삼중음성 1기로 AC-T 항암 3차째입니다"라고 말했을 때, 비슷한 경로를 먼저 지나간 사람의 경험을 바로 만날 수 있습니다. 주변 누구에게도 말 못 했던 이야기를 같은 상황에 있는 사람과 나눌 수 있는 공간입니다.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-label">Value 03</div>
+        <h4>진료 시간 밖에서도 질문할 수 있습니다</h4>
+        <p>새벽 2시에 잠이 오지 않아 검색하는 순간, 항암 후 갑자기 생긴 증상이 불안한 주말 오후에도 AI가 근거 기반의 정보를 즉시 제공합니다. 의료진이 검토한 답변에는 신뢰 표시가 부착되어, ChatGPT나 네이버 검색과는 다른 수준의 신뢰를 확보합니다. 다음 진료까지 혼자 불안해하지 않아도 됩니다.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-label">Value 04</div>
+        <h4>의료진의 임상 판단을 받을 수 있습니다</h4>
+        <p>LLM이 줄 수 없는 것은 임상 경험에서 나오는 판단입니다. "이 수치라면 임상에서는 보통 이렇게 봅니다"라는 한 마디가 환자에게는 인터넷의 수백 개 글보다 강한 안도감을 줍니다. AI가 답변 초안을 작성하고 의료진은 확인·수정만 하는 구조로, 의료진의 시간 부담을 최소화합니다.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-label">Value 05</div>
+        <h4>내 증상과 비슷한 경험을 즉시 찾을 수 있습니다</h4>
+        <p>"항암 3차 후 손발이 저려요"라고 글을 쓰면, AI가 커뮤니티 내에서 같은 증상을 겪은 환우의 게시글을 자동으로 찾아 보여줍니다. 어떤 방법으로 관리했는지, 의료진은 뭐라고 했는지, 얼마나 지속되었는지를 비슷한 맥락에서 바로 확인할 수 있습니다. 혼자 검색하며 헤매는 시간이 줄어듭니다.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-label">Value 06</div>
+        <h4>나에게 맞는 임상시험과 신약을 알 수 있습니다</h4>
+        <p>진단 정보, 치료 이력, 바이오마커(BRCA, HER2, PD-L1 등)를 입력하면 AI가 현재 모집 중인 임상시험과 최신 승인 약제 중 적합한 것을 큐레이션합니다. 키트루다, 엔허투, 키스칼리 같은 약제가 본인에게 해당되는지를 스스로 확인할 수 있는 첫 번째 경로가 됩니다. 치료 선택지를 넓히는 정보에 접근할 수 있습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CORE FEATURES ─── -->
+<section class="sec bg-gray">
+  <div class="sec-inner">
+    <div class="sec-label">Core Features</div>
+    <h2 class="sec-title">환자 여정 단계별 핵심 기능</h2>
+    <p class="sec-desc">각 단계의 심리적 필요에 맞춰 설계된 기능들이 환우가 올바른 정보 위에서 치료 여정을 이어갈 수 있도록 돕습니다.</p>
+
+    <div class="feat-grid">
+      <div class="feat-item">
+        <h4>환우 광장 — 경험과 정보의 공유 공간</h4>
+        <p>증상 질문, 치료 경험, 회복 사례, 최신 의학 정보 등을 게시판 형태로 공유합니다. 의료진이 답변한 게시글에는 검증 표시가 부착되며, 개인 경험과 의학 정보가 구조적으로 분리됩니다. 환우 간 응원과 정보가 공존하는 공간입니다.</p>
+      </div>
+      <div class="feat-item">
+        <h4>코호트 채팅 — 같은 단계 환우끼리의 대화</h4>
+        <p>같은 병기·치료 단계의 환우가 자동 구성된 소그룹에서 실시간으로 소통합니다. AI가 대화 내용을 요약하고, 맥락에 맞는 의료 정보를 자동으로 제공합니다. 입장 시 코호트 대화 요약이 제공되어 새 참여자도 맥락을 빠르게 파악할 수 있습니다.</p>
+      </div>
+      <div class="feat-item">
+        <h4>검사기록지 AI 분석 — 결과를 이해하는 경로</h4>
+        <p>검사 결과지를 촬영해 올리면 OCR로 자동 텍스트 변환 후, 의료법 준수 검증을 거쳐 의료진에게 전달됩니다. AI가 수치를 해석한 초안을 작성하고, 의료진이 검토·확정합니다. 평균 응답 시간은 2시간 이내이며, 개인정보는 자동 마스킹 처리됩니다.</p>
+      </div>
+      <div class="feat-item">
+        <h4>임상시험·신약 AI 매칭 — 선택지를 넓히다</h4>
+        <p>진단 정보, 치료 차수, 유전자 변이·바이오마커, ECOG 점수, 기저질환 등을 입력하면 AI가 현재 모집 중인 임상시험과 허가된 최신 약제의 적합성을 분석합니다. 환자 스스로 치료 옵션의 존재를 확인하고, 주치의와의 상담에서 구체적인 질문을 할 수 있게 됩니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RESEARCH CONNECTION ─── -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-label">Research Connection</div>
+    <h2 class="sec-title">닥터앤서 3.0 프로젝트와 연결됩니다</h2>
+    <p class="sec-desc">에이아이트릭스는 현재 세브란스병원과 함께 국가 과제 '닥터앤서 3.0'을 진행하고 있습니다. 대장암·위암 환우 예후 관리 AI 개발, 항암 치료 이후 환자 보고 결과(PRO) 수집 및 분석, 항암 중·후 환우 관리 서비스를 구축하고 있습니다.</p>
+
+    <div class="insight">
+      <p>핑크케어 커뮤니티에서 실제로 오가는 환우들의 목소리 — 그들이 진짜 궁금해하는 것, 정보 공유 패턴, 치료 후 일상의 어려움 — 이 VOC 데이터는 저희 AI가 <em>더 실질적으로 환자를 돕도록 설계하는 데 있어 임상 데이터에 버금가는 소중한 근거</em>가 됩니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ROLE ─── -->
+<section class="sec bg-gray">
+  <div class="sec-inner">
+    <div class="sec-label">Collaboration</div>
+    <h2 class="sec-title">교수님께 가장 먼저 부탁드리는 것은<br>환우분들을 이 공간으로 안내해 주시는 것입니다</h2>
+    <p class="sec-desc">진료 후 "검사 결과가 궁금하시면 핑크케어에서 물어보셔도 됩니다" 한 마디만으로 충분합니다. 아래 역할 중 관심이 가시는 부분에 대해 편하게 말씀 주십시오.</p>
+
+    <div class="role-list">
+      <div class="role-item role-primary">
+        <div class="role-num"></div>
+        <div>
+          <h4>외래 환우 안내 — 핵심 요청</h4>
+          <p>진료 후 링크 또는 명함형 팜플렛 공유. 병원 내 안내 가능 여부만 확인해 주셔도 큰 도움이 됩니다.</p>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-num"></div>
+        <div>
+          <h4>정기 인터뷰 참여</h4>
+          <p>최신 유방암 치료 동향, 환자가 자주 오해하는 정보 등을 중심으로 콘텐츠 제작. 일정·방식은 교수님께 맞춥니다.</p>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-num"></div>
+        <div>
+          <h4>오픈채팅방 임상 코멘트 (선택)</h4>
+          <p>하루 1~2건, "임상에서는 이런 경우 이렇게 봅니다" 한두 문장만으로도 LLM이 줄 수 없는 신뢰가 더해집니다.</p>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-num"></div>
+        <div>
+          <h4>커뮤니티 자문</h4>
+          <p>암환자 커뮤니티가 더 안전하고 실질적으로 운영될 수 있도록 임상 관점의 방향 제언을 부탁드립니다.</p>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-num"></div>
+        <div>
+          <h4>최신 치료 정보 공유</h4>
+          <p>학회 발표, 논문, 가이드라인 업데이트 등 전문가가 아니면 접근하기 어려운 정보를 환우들에게 전달해 주십시오.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="footer-line"></div>
+  <p>본 서비스는 진료·처방·의료 상담을 제공하지 않으며,<br>정보 공유와 심리적 지지를 목적으로 합니다.</p>
+  <p style="margin-top:18px;">에이아이트릭스 (AITRICS) · PinkCare<br>의료진 참여 문의: <a href="mailto:minjoo.lee@aitrics.com">minjoo.lee@aitrics.com</a></p>
+</footer>
+
+</body>
+</html>
